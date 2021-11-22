@@ -59,6 +59,7 @@ public class HiveLocalEmbeddedServer implements Runnable {
     public void run() {
         try {
             start();
+            started = true;
         } catch (Exception e) {
             LOGGER.error("HiveServer2 Failed To Start...", e);
             if (hiveServer != null) {
@@ -78,7 +79,6 @@ public class HiveLocalEmbeddedServer implements Runnable {
             hiveServer.init(config);
             hiveServer.start();
             waitForStartup();
-            started = true;
         }
     }
 
